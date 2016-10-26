@@ -2,3 +2,7 @@ node_modules
 bower_components
 *sublime-workspace
 *sublime-project
+.DS_Store
+*.iml
+.idea
+*.log
