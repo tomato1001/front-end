@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA,IAAI,CAAA;EACH,MAAM,EAAE,CAAE;EACV,OAAO,EAAG,CAAE,GAFR","file":"style.css","sourcesContent":["body{\n\tmargin: 0;\n\tpadding : 0;\n}  "],"sourceRoot":"/source/"}

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+    <script type="text/javascript" src="assets/vendor/jquery/1.11.1/jquery.min.js"></script>
+    <!-- for highcharts not exist -->
+    <!--<script type="text/javascript" src="assets/vendor/jquery/highmaps/highmaps.js"></script>-->
+
+    <script type="text/javascript" src="assets/vendor/jquery/highcharts-4.2.3/highcharts.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery/highcharts-4.2.3/map.js"></script>
+    <script type="text/javascript" src="assets/vendor/jquery/highcharts-4.2.3/cn-all-sar-taiwan.js"></script>
+    <style type="text/css">
+        #container {
+            height: 300px;
+            width: 350px;
+            margin: 0 auto;
+        }
+        .loading {
+            margin-top: 10em;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/javascript">
+    $(function () {
+
+        var provinceMap = {
+            "cn-sh": '上海',
+            "cn-zj": '浙江',
+            "cn-fj": '福建',
+            "cn-gd": '广东',
+            "cn-yn": '云南',
+            "cn-xz": '西藏',
+            "cn-nx": '宁夏',
+            "cn-sa": '山西',
+            "cn-ah": '安徽',
+            "cn-hu": '湖北',
+            "cn-cq": '重庆',
+            "cn-hn": '湖南',
+            "cn-bj": '北京',
+            "cn-hb": '河北',
+            "cn-sd": '山东',
+            "cn-tj": '天津',
+            "cn-ha": '海南',
+            "cn-jl": '吉林',
+            "cn-qh": '青海',
+            "cn-xj": '新疆',
+            "cn-nm": '内蒙古',
+            "cn-hl": '黑龙江',
+            "cn-sc": '四川',
+            "cn-gz": '广州',
+            "cn-gx": '广西',
+            "cn-ln": '辽宁',
+            "cn-js": '江苏',
+            "cn-gs": '甘肃',
+            "cn-sx": '山西',
+            "cn-he": '河南',
+            "cn-jx": '江西'
+        };
+
+        // Prepare demo data
+        var data = [
+            {
+                "hc-key": "cn-sh", //上海
+                "value": 1
+            },
+            {
+                "hc-key": "cn-zj", //浙江
+                "value": 3
+            },
+            {
+                "hc-key": "cn-fj", //福建
+                "value": 7
+            },
+            {
+                "hc-key": "cn-gd", //广东
+                "value": 8
+            },
+            {
+                "hc-key": "cn-yn", //云南
+                "value": 21
+            },
+            {
+                "hc-key": "cn-xz", // 西藏
+                "value": 22
+            },
+            {
+                "hc-key": "cn-nx", // 宁夏
+                "value": 26
+            },
+            {
+                "hc-key": "cn-sa", // 山西
+                "value": 27
+            },
+            {
+                "hc-key": "cn-ah", // 安徽
+                "value": 32
+            },
+            {
+                "hc-key": "cn-ah", // 安徽
+                "value": 33
+            },
+            {
+                "hc-key": "cn-cq", //重庆
+                "value": 40
+            },
+            {
+                "hc-key": "cn-hn", // 湖南
+                "value": 41
+            },
+            {
+                "hc-key": "cn-bj", // 北京
+                "value": 51
+            },
+            {
+                "hc-key": "cn-hb", // 河北
+                "value": 52
+            },
+            {
+                "hc-key": "cn-sd", // 山东
+                "value": 55
+            },
+            {
+                "hc-key": "cn-tj", // 天津
+                "value": 57
+            },
+            {
+                "hc-key": "cn-ha", // 海南
+                "value": 58
+            },
+            {
+                "hc-key": "cn-jl", // 吉林
+                "value": 59
+            },
+            {
+                "hc-key": "cn-qh", // 青海
+                "value": 60
+            },
+            {
+                "hc-key": "cn-xj", // 新疆
+                "value": 61
+            },
+            {
+                "hc-key": "cn-nm", // 内蒙古
+                "value": 62
+            },
+            {
+                "hc-key": "cn-hl", // 黑龙江
+                "value": 63
+            },
+            {
+                "hc-key": "cn-sc", // 四川
+                "value": 64
+            },
+            {
+                "hc-key": "cn-gz", // 广州
+                "value": 65
+            },
+            {
+                "hc-key": "cn-gx", // 广西
+                "value": 66
+            },
+            {
+                "hc-key": "cn-ln", // 辽宁
+                "value": 67
+            },
+            {
+                "hc-key": "cn-js", // 江苏
+                "value": 68
+            },
+            {
+                "hc-key": "cn-gs", // 甘肃
+                "value": 69
+            },
+            {
+                "hc-key": "cn-sx", // 山西
+                "value": 70
+            },
+            {
+                "hc-key": "cn-he", // 河南
+                "value": 71
+            },
+            {
+                "hc-key": "cn-jx", // 江西
+                "value": 72
+            },
+            {
+                "hc-key": "cn-hu",
+                "value": 20000
+            }
+        ];
+
+        // Initiate the chart
+        $('#container').highcharts('Map', {
+
+            chart: {
+//                events: {
+//                    load: function() {
+////                        $(".highcharts-legend-title").empty()
+////                                .append('<text x="-70" zindex="1" style="font-weight:bold;" y="33">访问次数 低</text>')
+////                                .append('<text x="210" zindex="1" style="font-weight:bold;" y="33">高</text>');
+//                        this.renderer.text('访问次数', -70, 33).add();
+//                    }
+//                }
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            title : {
+                text : ''
+            },
+
+//            subtitle : {
+//                text : 'Source map: <a href="https://code.highcharts.com/mapdata/countries/cn/custom/cn-all-sar-taiwan.js">China with Hong Kong, Macau, and Taiwan</a>'
+//            },
+
+//            mapNavigation: {
+//                enabled: true,
+//                buttonOptions: {
+//                    verticalAlign: 'bottom'
+//                }
+//            },
+
+            colorAxis: {
+                min: 0,
+                reversed: true
+            },
+
+            tooltip: {
+                formatter: function() {
+                    return provinceMap[this.point['hc-key']] + ' ' + this.point.value;
+                }
+            },
+
+
+
+            legend: {
+
+                verticalAlign: 'top',
+                itemDistance: 0,
+                reversed: true
+            },
+
+            series : [{
+                data : data,
+                mapData: Highcharts.maps['countries/cn/custom/cn-all-sar-taiwan'],
+                joinBy: 'hc-key',
+                name: 'Random data',
+                states: {
+                    hover: {
+                        color: '#BADA55'
+                    }
+                }
+//                dataLabels: {
+//                    enabled: true,
+////                    format: '{point.name}'
+//                    formatter: function() {
+//                        return provinceMap[this.point['hc-key']] || '';
+//                    }
+//                }
+            }]
+        }, function(chart) {
+            $(".highcharts-coloraxis-labels").remove();
+            chart.renderer.text('访问次数 高', 0, 28).css({
+                "font-weight": "bold"
+            }).add();
+            chart.renderer.text('低', 276, 28).css({
+                "font-weight": "bold"
+            }).add();
+
+        });
+    });
+</script>
+
+<!---->
+<!---->
+</body>
+</html>

@@ -1,0 +1,77 @@
+body {
+    background: #dedede;
+}
+.site-header {
+    margin: 40px 0;
+    padding: 20px 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 103;
+    transition-duration: .3s;
+}
+
+.site-header a {
+    text-decoration: none;
+}
+
+.site-header-brand {
+    float: left;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 38px;
+    color: #2e2e2e;
+}
+
+.site-header-brand:hover {
+    color: #2e2e2e;
+}
+
+.site-header-nav {
+    float: right;
+}
+
+.site-header-nav-item {
+    padding: 10px;
+    margin-left: 1em;
+    font-size: 19px;
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    position: relative;
+    overflow: hidden
+}
+
+.site-header-nav-item:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: #2098d1;
+    height: 4px;
+    transition-property: left,right;
+    transition-duration: .3s;
+    transition-timing-function: ease-out
+}
+
+.site-header-nav-item:hover:before, .site-header-nav-item:focus:before, .site-header-nav-item:active:before {
+    left: 0;
+    right: 0;
+}
+
+.site-header-nav-scrolled {
+    margin-top: 0;
+}
+
+.jumbotron {
+    padding-top: 200px;
+    padding-bottom: 100px;
+}
+

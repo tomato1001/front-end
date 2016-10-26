@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Handlebars</title>
+	<script type="text/javascript" src="./lib/jquery.js"></script>
+	<script type="text/javascript" src="./lib/handlebars-v4.0.5.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$("#btn-basic").click(function(){
+			var data = {
+				title: 'title',
+				body: 'Handlebars'
+			};
+			var entryTemplate = $("#basic-template").html();
+			var template = Handlebars.compile(entryTemplate);
+			var html = template(data);
+			$('#content').html(html);
+		});
+
+		$("#btn-list").click(function(){
+			var data = [
+				{name: '11', age: 11},
+				{name: '22', age: 22},
+				{name: '33', age: 33},
+				{name: '44', age: 44}
+			];
+
+			var listTemplate = $("#list-template").html();
+			var template = Handlebars.compile(listTemplate);
+			var html = template(data);
+			$("#content").html(html);
+		});
+	});
+	</script>
+</head>
+<body>
+<div id="content"></div>
+<div>
+	<button id="btn-basic" type="button">basic</button>
+	<button id="btn-list" type="button">list</button>
+</div>
+<script id="basic-template" type="text/x-handlebars-template">
+  <div class="entry">
+    <h1>{{title}}</h1>
+    <div class="body">
+      {{body}}
+    </div>
+  </div>
+</script>
+<script id="list-template" type="text/x-handlebars-template">
+  <div class="entry">
+    {{#each this}}
+    <h1>{{name}}</h1>
+    <div class="body">
+      {{age}}
+    </div>
+    {{/each}}
+  </div>
+</script>
+</body>
+</html>

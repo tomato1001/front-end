@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Triangle</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <style media="screen">
+        .arrow-up {
+            width: 0px;
+            height: 0px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid black;
+        }
+        
+        .arrow-down {
+            width: 0px;
+            height: 0px;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid red
+        }
+        
+        .arrow-left {
+            width: 0px;
+            height: 0px;
+            border-top: 40px solid transparent;
+            border-bottom: 40px solid transparent;
+            border-right: 40px solid green;
+        }
+        
+        .arrow-right {
+            width: 0px;
+            height: 0px;
+            border-top: 60px solid transparent;
+            border-bottom: 60px solid transparent;
+            border-left: 60px solid yellow;
+        }
+        
+        /*
+            箭头朝向左边时,将左边的宽度设置为0, 并设置反方向的颜色,其它方向的颜色设置为透明
+        */
+        .arrow-demo {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent red transparent transparent;
+        }
+        
+        .arrow-bubble {
+            transition-duration: 0.3s;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .arrow-bubble:hover, .arrow-bubble:focus, .arrow-bubble:active {
+            transform: translateX(10px);
+        }
+        
+        .arrow-bubble:before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #fff;
+            transition-duration: 0.3s;
+            transition-property: transform;
+        }
+        
+        .arrow-bubble:hover:before, .arrow-bubble:focus:before, .arrow-bubble:active:before {
+            border-right: 10px solid #4183c4;
+            transform: translateX(-20px);
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="arrow-up"></div>
+        <br>
+        <div class="arrow-down"></div>
+        <br>
+        
+        <div class="arrow-left"></div>
+        <br>
+        <div class="arrow-right"></div>
+        <br>
+        <div>
+            <a href="javascript:void(0)" class="arrow-bubble">自动hover</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+@import "css3-mixins";
+
+$navbar-height: 45px;
+
+body {
+	&:before {
+		content: "";
+		display: block;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		background-color: #eee;
+	}
+}
+
+// overwrite the style of nav of bootstrap
+.nav {
+	.open {
+		& > a, & > a:hover, & > a:focus {
+			border-color: #f3f3f3;
+		}
+	}
+}
+
+.pace{
+	.pace-progress{
+		background: #fb6e52;
+		height: 3px;
+	}
+}
+
+.nav-header{
+	position : relative;
+	background-color: #2dc3e8;
+	min-height: $navbar-height;
+	margin : 0;
+
+	.app-sidebar-collapse {
+		position: absolute;
+		left: 189px;
+		text-align: center;
+
+		&:hover{
+			@include box-shadow(0, 0, 20px, rgba(0,0,0,.2));
+			cursor: pointer;
+		}
+
+		&.active{
+			.app-sidebar-collapse-icon {
+				font-size: 14px;
+				@include box-shadow(0, 0, 20px, rgba(0, 0, 0, .2));
+			}
+
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
+		.app-sidebar-collapse-icon {
+			color : #fff;
+			width: 35px;
+			height: $navbar-height;
+			line-height: $navbar-height;
+			font-size: 18px;
+		}
+	}
+}
+
+.app-content {
+	position: relative;
+}
+
+// for left sidebar
+.app-sidebar{
+	position: absolute;
+	top: 0;
+	bottom:0;
+	width: 224px;
+	display: block;
+
+	// left sidebar background
+	&:before {
+		position: fixed;
+		content: "";
+		top: 0;
+		bottom: 0;
+		left: 5px;
+		display: block;
+		width: 219px;
+		background-color: #fff;
+		z-index: -1;
+		@include box-shadow(0, 0, 10px, rgba(0, 0, 0, .2));
+	}
+	
+	// sidebar menu
+	.sidebar-menu{
+		padding: 0;
+		margin: 0;
+		margin-left: 5px;
+
+		li {
+			padding : 0;
+			margin: 0;
+			border: 0;
+			cursor: pointer;
+
+			&:hover {
+				&:before {
+					background-color: #fb6e52;
+					display: block;
+				}
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 4px;
+				min-width: 4px;
+				left: -4px;
+				background-color: #2dc3e8;
+				display: none;
+			}
+
+			&.active {
+				a {
+					display: block;
+					color: #262626;
+					background-color: #f5f5f5;
+				}
+				
+				&:before {
+					display: block;
+				}
+			}
+
+			a {
+				padding: 0 16px 0 7px;
+				height: 38px;
+				line-height: 38px;
+				border-top: 1px solid #f3f3f3;
+				color: #737373;
+
+				&:hover {
+					border-color: #f3f3f3;
+					background-color: #fbfbfb;
+					color: #262626;
+				}
+
+				.menu-icon {
+					display: inline-block;
+					min-width: 30px;
+					font-size: 14px;
+					text-align: center;
+				}
+
+				.expand {
+					width: 5px;
+					height: 14px;
+					position: absolute;
+					top: 12px;
+					right: 15px;
+					@include transition(all 300ms ease-in-out);
+				}
+			}
+
+			&:last-child > a{
+				border-bottom: 1px solid #f3f3f3;
+			}
+
+			.submenu {
+				display: none;
+				background-color: #fbfbfb;
+				box-shadow: inset 0 4px 4px -2px rgba(0, 0, 0, .2);
+
+				&>li.open {
+
+					&:hover:before {
+						display: none;
+					}
+					
+					& > a {
+						background-color: #fff;
+
+						.expand {
+							@include transform(rotate(90deg));
+						}
+					}
+
+					&>.submenu {
+						display: block;
+					}					
+				}
+			}
+
+			.open {
+				background-color: #fff;
+			}
+		}
+
+		&>li.open{
+
+			&:hover:before {
+				display: none;
+			}
+
+			& > a {
+				background-color: #fff;
+				border-bottom: 0;
+				.expand {
+					@include transform(rotate(90deg));
+				}
+			}
+
+			&>.submenu {
+				display: block;
+
+				&>li>a {
+					border-bottom: 0;
+				}
+			}
+		}
+
+		.menu-text {
+			padding-left: 5px;
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+

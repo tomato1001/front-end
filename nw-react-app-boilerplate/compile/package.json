@@ -1,0 +1,37 @@
+{
+  "name": "nw-react-app-boilerplate",
+  "version": "1.0.0",
+  "description": "An application boilerplate of nw.js(node-webkit) and React.js",
+  "main": "index.html",
+  "scripts": {
+    "prestart": "gulp compile",
+    "start": "nwbuild -r -v 0.12.3 --cacheDir ./cache ./compile",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airtoxin/nw-react-app-boilerplate.git"
+  },
+  "author": "airtoxin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/airtoxin/nw-react-app-boilerplate/issues"
+  },
+  "homepage": "https://github.com/airtoxin/nw-react-app-boilerplate",
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-tap-event-plugin": "^0.2.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
+    "gulp-less": "^3.0.5",
+    "nw-builder": "^2.2.0",
+    "reactify": "^1.0.0",
+    "require-dir": "^0.3.0",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}

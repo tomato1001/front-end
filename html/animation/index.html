@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Triangle</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <style media="screen">
+        .container {
+            margin: 40px 0;
+        }
+        
+        .a-dash {
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            border: 1px solid #dedede;
+            border-radius: 5px;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+        
+        .a-dash:hover {
+            text-decoration: none;
+        }
+        
+        .a-dash:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            height: 4px;
+            z-index: -1;
+            background: #2098d1;
+            transition-property: left,right;
+            transition-duration: .3s;
+            transition-timing-function: ease-out;
+        }
+        
+        .a-dash:hover:before {
+            left: 0;
+            right: 0;
+        }
+        
+        .base-animation {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes fadeOutDown {
+          from {
+            opacity: 1;
+          }
+
+          to {
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+          }
+        }
+
+        .fadeOutDown {
+            animation-name: fadeOutDown;
+        }
+        
+        @keyframes slideOutDown {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+
+          to {
+            visibility: hidden;
+            transform: translate3d(0, 100%, 0);
+          }
+        }
+
+        .slideOutDown {
+          animation-name: slideOutDown;
+        }
+        
+        @keyframes slideInDown {
+          from {
+            transform: translate3d(0, -100%, 0);
+            visibility: visible;
+          }
+
+          to {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .slideInDown {
+          animation-name: slideInDown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="javascript:void(0)" class="a-dash">dash</a>
+    </div>
+    <div class="base-animation fadeOutDown">
+        <h1>Fade out</h1>
+    </div>
+    <div class="base-animation slideOutDown">
+        <h1>Slide out down</h1>
+    </div>
+    <div class="base-animation slideInDown">
+        <h1>Slide in down</h1>
+    </div>    
+</body>
+
+</html>

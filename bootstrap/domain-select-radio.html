@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="lib/bootstrap/js/html5shiv.min.js"></script>
+    <script src="lib/bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+    <style media="screen">
+        #main {
+            margin: 40px 20px
+        }
+        
+        .domainDropDown {
+            width: 118px;
+        }
+        
+        .domainDropDown .dropdown-menu {
+            width: 400px;
+            padding: 15px 15px;
+        }
+        
+        .domainDropDown .list-group-item {
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .domainDropDown .list-group {
+            margin-bottom: 0px;
+        }
+        
+        .domainDropDown .padding {
+            padding: 10px 15px;
+        }
+        
+        .domainDropDown .radio-all {
+            padding-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="input-group domainDropDown">
+            <div class="input-group-btn" id="domainDropDown">
+                <button type="button" id="btn-domain-dropdown" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="badge" id="domain-counter">12</span>
+                    <span class="caret"></span>
+                </button>
+                <div class="dropdown-menu">
+                    <div class="row">
+                      <div class="col-xs-12 radio-all">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="domain" value="hls2"> 全选
+                            </label>
+                        </div>
+                      </div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>阿里</strong>
+                        </li>
+                    </ul>
+                    <div class="row padding" id="c-ali">
+                        <div class="col-xs-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hls2"> hls2
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hls5"> hls5
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hlsf2"> hlsf2
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="rtmp2"> rtmp2
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hlslive2"> hlslive2
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>快网</strong>
+                        </li>
+                    </ul>
+                    <div class="row padding" id="c-fastweb">
+                        <div class="col-sm-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hls1"> hls1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hlsf1"> hlsf1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hlslive1"> hlslive1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="hls10"> hls10
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="rtmp1"> rtmp1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="domain" value="rtmp-push"> rtmp-push
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="lib/jquery-1.12.1.min.js" charset="utf-8"></script>
+    <script src="lib/bootstrap/js/bootstrap.js" charset="utf-8"></script>
+    <script src="bootstrap-dropmenu.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $("#btn-domain-dropdown").dropdown();
+
+        $("#domainDropDown").on('hide.bs.dropdown', function(e) {
+            var target = e._target;
+            if (target) {
+                target = $(target);
+                return $(this).has($(target)).length == 0;
+            }
+        });
+    </script>
+</body>
+
+</html>

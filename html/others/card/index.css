@@ -1,0 +1,33 @@
+body {
+    background: #dedede;
+}
+
+.container {
+    margin: 40px 0;
+}
+
+.hover-card {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    background: #fff;
+    position: relative;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border-radius: 5px;
+}
+
+.hover-card:before {
+    content: "";
+    width: 0;
+    background: #E4572E;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    border-radius: 5px 0 0 5px; /* 上左 上右 下右 下左*/
+}
+
+.hover-card:hover:before {
+    width: 5px;
+}

@@ -1,0 +1,221 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+  Mixins available:
+    -   css3-prefix             - arguments: Property, Value
+    -   background-gradient     - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-horizontal   - arguments: Start Color: #3C3C3C, End Color: #999999
+    -   background-radial       - arguments: Start Color: #FFFFFF, Start position: 0%, End Color: #000000, End position: 100%
+    -   background-size         - arguments: Width: 100%, Height: 100%
+    -   background-opacity      - arguments: Color: #000, Opacity: .85
+    -   border-radius           - arguments: Radius: 5px
+    -   border-radius-separate  - arguments: Top Left: 5px, Top Right: 5px, Bottom Left: 5px, Bottom Right: 5px
+    -   box                     - arguments: Orientation: horizontal, Pack: center, Align: center
+    -   box-rgba                - arguments: R: 60, G: 3, B: 12, Opacity: 0.23, Color: #3C3C3C
+    -   box-shadow              - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   box-sizing              - arguments: Type: border-box
+    -   columns                 - arguments: Count: 3, Gap: 10
+    -   double-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Radius: 0
+    -   flex                    - arguments: Value: 1
+    -   flip                    - arguments: ScaleX: -1
+    -   font-face               - arguments: Font Family: myFont, Eot File Src: myFont.eot, Woff File Src: myFont.woff, Ttf File Src: myFont.ttf
+    -   opacity                 - arguments: Opacity: 0.5
+    -   outline radius          - arguments: Radius: 5px
+    -   resize                  - arguments: Direction: both
+    -   rotate                  - arguments: Degree: 0, M11: 0, M12: 0, M21: 0, M22: 0
+    CSS Matrix Rotation Calculator http://www.boogdesign.com/examples/transforms/matrix-calculator.html
+    -   text-shadow             - arguments: X: 2px, Y: 2px, Blur: 5px, Color: rgba(0,0,0,.4)
+    -   transform               - arguments: Parameters: null
+    -   transform-style         - arguments: Style: preserve-3d
+    -   transition              - Default arguments: What: all, Length: 1s, Easing: ease-in-out
+    -                            - Examples: @include transition (all 2s ease-in-out);
+    -                                        @include transition (opacity 1s ease-in 2s, width 2s ease-out);
+    -   triple-borders          - arguments: Color One: #3C3C3C, Color Two: #999999, Color Three: #000000, Radius: 0
+    -   keyframes               - arguments: Animation name
+                                - content:   Animation css
+    -   animation               - arguments: name duration timing-function delay iteration-count direction fill-mode play-state
+                                             (http://www.w3schools.com/cssref/css3_pr_animation.asp)
+
+------------------------------------------------------------- */
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #eee; }
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  border-color: #f3f3f3; }
+
+.pace .pace-progress {
+  background: #fb6e52;
+  height: 3px; }
+
+.nav-header {
+  position: relative;
+  background-color: #2dc3e8;
+  min-height: 45px;
+  margin: 0; }
+  .nav-header .app-sidebar-collapse {
+    position: absolute;
+    left: 189px;
+    text-align: center; }
+    .nav-header .app-sidebar-collapse:hover {
+      -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -khtml-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -ms-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer; }
+    .nav-header .app-sidebar-collapse.active .app-sidebar-collapse-icon {
+      font-size: 14px;
+      -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -khtml-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -ms-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+    .nav-header .app-sidebar-collapse.active:hover {
+      box-shadow: none; }
+    .nav-header .app-sidebar-collapse .app-sidebar-collapse-icon {
+      color: #fff;
+      width: 35px;
+      height: 45px;
+      line-height: 45px;
+      font-size: 18px; }
+
+.app-content {
+  position: relative; }
+
+.app-sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 224px;
+  display: block; }
+  .app-sidebar:before {
+    position: fixed;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    display: block;
+    width: 219px;
+    background-color: #fff;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    -khtml-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+  .app-sidebar .sidebar-menu {
+    padding: 0;
+    margin: 0;
+    margin-left: 5px; }
+    .app-sidebar .sidebar-menu li {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      cursor: pointer; }
+      .app-sidebar .sidebar-menu li:hover:before {
+        background-color: #fb6e52;
+        display: block; }
+      .app-sidebar .sidebar-menu li:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        min-width: 4px;
+        left: -4px;
+        background-color: #2dc3e8;
+        display: none; }
+      .app-sidebar .sidebar-menu li.active a {
+        display: block;
+        color: #262626;
+        background-color: #f5f5f5; }
+      .app-sidebar .sidebar-menu li.active:before {
+        display: block; }
+      .app-sidebar .sidebar-menu li a {
+        padding: 0 16px 0 7px;
+        height: 38px;
+        line-height: 38px;
+        border-top: 1px solid #f3f3f3;
+        color: #737373; }
+        .app-sidebar .sidebar-menu li a:hover {
+          border-color: #f3f3f3;
+          background-color: #fbfbfb;
+          color: #262626; }
+        .app-sidebar .sidebar-menu li a .menu-icon {
+          display: inline-block;
+          min-width: 30px;
+          font-size: 14px;
+          text-align: center; }
+        .app-sidebar .sidebar-menu li a .expand {
+          width: 5px;
+          height: 14px;
+          position: absolute;
+          top: 12px;
+          right: 15px;
+          -webkit-transition: all 300ms ease-in-out;
+          -khtml-transition: all 300ms ease-in-out;
+          -moz-transition: all 300ms ease-in-out;
+          -ms-transition: all 300ms ease-in-out;
+          -o-transition: all 300ms ease-in-out;
+          transition: all 300ms ease-in-out; }
+      .app-sidebar .sidebar-menu li:last-child > a {
+        border-bottom: 1px solid #f3f3f3; }
+      .app-sidebar .sidebar-menu li .submenu {
+        display: none;
+        background-color: #fbfbfb;
+        box-shadow: inset 0 4px 4px -2px rgba(0, 0, 0, 0.2); }
+        .app-sidebar .sidebar-menu li .submenu > li.open:hover:before {
+          display: none; }
+        .app-sidebar .sidebar-menu li .submenu > li.open > a {
+          background-color: #fff; }
+          .app-sidebar .sidebar-menu li .submenu > li.open > a .expand {
+            -webkit-transform: rotate(90deg);
+            -khtml-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg); }
+        .app-sidebar .sidebar-menu li .submenu > li.open > .submenu {
+          display: block; }
+      .app-sidebar .sidebar-menu li .open {
+        background-color: #fff; }
+    .app-sidebar .sidebar-menu > li.open:hover:before {
+      display: none; }
+    .app-sidebar .sidebar-menu > li.open > a {
+      background-color: #fff;
+      border-bottom: 0; }
+      .app-sidebar .sidebar-menu > li.open > a .expand {
+        -webkit-transform: rotate(90deg);
+        -khtml-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg); }
+    .app-sidebar .sidebar-menu > li.open > .submenu {
+      display: block; }
+      .app-sidebar .sidebar-menu > li.open > .submenu > li > a {
+        border-bottom: 0; }
+    .app-sidebar .sidebar-menu .menu-text {
+      padding-left: 5px; }
+
+/*# sourceMappingURL=app.css.map */

@@ -1,0 +1,64 @@
+@import "css3-mixins";
+
+$width : 100%;
+$height : 100%;
+
+html {
+	width: $width;
+	height: $height;
+}
+
+// Set display as table of body and display as table-cell of container
+// will vertical middle div
+body {
+	background-color: #f3f3f3;
+	margin: 0;
+	width: $width;
+	height: $height;
+	display: table;
+
+	#container {
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+
+		.box {
+			position: relative;
+			min-width: 200px;
+			max-width: 500px;
+			min-height: 100px;
+			@include border-radius();
+			background-color: #fff;
+			margin: 20px auto;
+			
+			// vertical middle. It depends parent container's position
+			div {
+				position: absolute;
+				height: 50%;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+
+			&.sample{
+				@include box-shadow(0px, 0px, 10px, rgba(0, 0, 0, .5));
+			}
+
+			&.inset {
+				box-shadow : inset 0 0 1em gold, 0 0 1em red;
+				// @include box-shadow(inset, 0px, 0px, 10px, red);
+			}
+
+			&.offset {
+				@include box-shadow(4px, 4px, 10px, red);
+			}
+
+			&.multiple {
+				box-shadow: 3px 3px red, 3px 3px 0.4em olive; 
+			}
+		}
+
+	}
+}

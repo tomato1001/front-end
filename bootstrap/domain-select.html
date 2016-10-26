@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="lib/bootstrap/js/html5shiv.min.js"></script>
+    <script src="lib/bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+    <style media="screen">
+        #main {
+            margin: 40px 20px
+        }
+        
+        .domainDropDown {
+            width: 118px;
+        }
+        
+        .domainDropDown .dropdown-menu {
+            width: 400px;
+            padding: 15px 15px;
+        }
+        
+        .domainDropDown .list-group-item {
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .domainDropDown .list-group {
+            margin-bottom: 0px;
+        }
+        
+        .domainDropDown .padding {
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="input-group domainDropDown">
+            <div class="input-group-btn" id="domainDropDown">
+                <button type="button" id="btn-domain-dropdown" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="badge" id="domain-counter">12</span>
+                    <span class="caret"></span>
+                </button>
+                <div class="dropdown-menu">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="ali-all"> <strong>阿里</strong>
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="row padding" id="c-ali">
+                        <div class="col-xs-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="ali" value="hls2"> hls2
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="ali" value="hls5"> hls5
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="ali" value="hlsf2"> hlsf2
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="ali" value="rtmp2"> rtmp2
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="ali" value="hlslive2"> hlslive2
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="fastweb-all"> <strong>快网</strong>
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="row padding" id="c-fastweb">
+                        <div class="col-sm-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="fastweb" value="hls1"> hls1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="fastweb" value="hlsf1"> hlsf1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="fastweb" value="hlslive1"> hlslive1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="fastweb" value="hls10"> hls10
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="fastweb" value="rtmp1"> rtmp1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="fastweb" value="rtmp-push"> rtmp-push
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="lib/jquery-1.12.1.min.js" charset="utf-8"></script>
+    <script src="lib/bootstrap/js/bootstrap.js" charset="utf-8"></script>
+    <script src="bootstrap-dropmenu.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $("#btn-domain-dropdown").dropdown();
+
+        $("#domainDropDown").on('hide.bs.dropdown', function(e) {
+            var target = e._target;
+            if (target) {
+                target = $(target);
+                return $(this).has($(target)).length == 0;
+            }
+        });
+
+        var DomainChecker = function(options) {
+            this.allSelector = options.allSelector;
+            this.checkboxSelector = options.checkboxSelector;
+            this.$parent = options.$parent;
+            this.$container = options.$container;
+            this.domains = [];
+            this.defaultCheckAll = options.defaultCheckAll == undefined ? true : false;
+        };
+
+        DomainChecker.prototype = {
+
+            init: function() {
+                this.$parent.on('click', this.allSelector, $.proxy(this._doCheckAll, this))
+                    .on('click', this.checkboxSelector, $.proxy(this._doCheckOne, this));
+                if (this.defaultCheckAll) {
+                    this.$parent.find(this.allSelector).trigger('click');
+                }
+            },
+
+            _doCheckAll: function(e) {
+                var checked = $(e.target).prop('checked'),
+                    $all = this.$container.find(this.checkboxSelector),
+                    that = this;
+                $all.prop('checked', checked);
+                this.domains = [];
+                if (checked) {
+                    $all.each(function(i, o) {
+                        that.domains.push(o.value);
+                    });
+                }
+                $(document).trigger('domainChecker.checkeAll');
+            },
+
+            _doCheckOne: function(e) {
+                var $el = $(e.target),
+                    checked = $el.prop('checked'),
+                    val = $el.val();
+                if (checked) {
+                    this.domains.push(val);
+                } else {
+                    this.domains.splice(this.domains.indexOf(val), 1);
+                }
+                var amount = this.$container.find(this.checkboxSelector).length;
+                this.$parent.find(this.allSelector)
+                    .prop('checked', this.domains.length == amount);
+                $(document).trigger('domainChecker.checkeOne');
+            },
+
+            getDomains: function() {
+                return this.domains;
+            }
+        };
+
+        var DomainCounter = function(checkers, $el, defaultAmount) {
+            this.checkers = checkers || [];
+            this.$el = $el;
+            this.defaultAmount = defaultAmount || 0;
+            this.init();
+        };
+
+        DomainCounter.prototype = {
+            init: function () {
+                this.$el.text(this.defaultAmount);
+            },
+            setValue: function() {
+                var amount = 0;
+                $.each(this.checkers, function(i, o) {
+                    amount += (o.getDomains().length);
+                });
+                this.$el.text(amount);
+            }
+        }
+
+        var aliDomainChecker = new DomainChecker({
+            allSelector: '#ali-all',
+            checkboxSelector: 'input[name="ali"]',
+            $container: $("#c-ali"),
+            $parent: $('#domainDropDown')
+        });
+        
+
+        var fastWebDomainChecker = new DomainChecker({
+            allSelector: '#fastweb-all',
+            checkboxSelector: 'input[name="fastweb"]',
+            $container: $("#c-fastweb"),
+            $parent: $('#domainDropDown')
+        });
+
+        var domainCounter = new DomainCounter([aliDomainChecker, fastWebDomainChecker], $('#domain-counter'));
+
+        $(document).on('domainChecker.checkeAll domainChecker.checkeOne', function() {
+            domainCounter.setValue();
+        });
+        
+        aliDomainChecker.init();
+        fastWebDomainChecker.init();
+    </script>
+</body>
+
+</html>

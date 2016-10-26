@@ -1,0 +1,30 @@
+a {
+	text-decoration: none;
+}
+
+#header {
+	height: 3em;
+	line-height: 3em;
+	z-index: 10000;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: #2e3842;
+}
+
+#header h1 {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	line-height: inherit;
+	font-size: 100%;
+	left: 1.25em;
+	color: #ffffff;
+}
+
+#header h1 a {
+	display: block;
+	color: inherit;
+}

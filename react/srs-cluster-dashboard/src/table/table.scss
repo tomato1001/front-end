@@ -1,0 +1,33 @@
+@import "../index.scss";
+
+.react-table {
+    margin-bottom: 10px;
+}
+
+.loading {
+    position: relative;
+    text-align: center;
+}
+
+.toolbar {
+    text-align: right;
+    padding-bottom: 5px;
+}
+
+.title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 15pt;
+}
+
+.react-pagination-info {
+    height: 40px;
+    line-height: 40px;
+}
+.react-pagination-page {
+    text-align: right;
+}
+
+.react-pagination-page-pagination{
+    margin: 0 0;
+}

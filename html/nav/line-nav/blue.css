@@ -1,0 +1,30 @@
+.site-header, .jumbotron {
+    background: #4183c4;
+    color: #fff;
+}
+
+.site-header-brand {
+    color: #fff;
+}
+
+.site-header-brand:hover {
+    color: #fff;
+}
+
+.site-header-nav-item {
+    color: #9acfea;
+}
+
+.site-header-nav-item:hover {
+    color: #fff;
+}
+
+.site-header-nav-scrolled {
+    color: #000;
+    background: #fff;
+}
+
+.site-header-nav-scrolled a, .site-header-nav-scrolled a:hover {
+    color: #000;
+}
+

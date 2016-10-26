@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>line nav</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css" media="screen">
+    <link rel="stylesheet" href="./blue.css" media="screen">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(window).scroll(function () {
+                var scrollPos = $(this).scrollTop();
+                if (scrollPos > 70) {
+                    $(".site-header").addClass("site-header-nav-scrolled");
+                }
+                else {
+                    $(".site-header").removeClass("site-header-nav-scrolled");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="site-header-brand">Brand</a>
+            <nav class="site-header-nav">
+                <a href="#" class="site-header-nav-item">Home</a>
+                <a href="#" class="site-header-nav-item">About</a>
+                <a href="#" class="site-header-nav-item">Blog</a>
+            </nav>
+        </div>
+    </header>
+    <div class="content">
+        <section class="jumbotron">
+            <div class="container">
+              <h1>Site jumbotron</h1>
+            </div>
+        </section>
+        <article class="container">
+            <div class="row">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+        </article>
+    </div>
+    
+
+</body>
+
+</html>

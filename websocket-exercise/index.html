@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WebSocket</title>
+        <script type="text/javascript">
+            var ws;
+            
+            function openWs(event) {
+                ws = new WebSocket('ws://127.0.0.1:4080');
+                ws.onopen = function(event) {
+                    console.log('open', event);
+                };
+                ws.onclose = function (event) {
+                    console.log('close', event);
+                }
+                ws.onmessage = function (event) {
+                    console.log(JSON.parse(event.data));
+                }
+            }
+            
+            function closeWs() {
+                ws.close();
+            }
+            
+            function sendMsg() {
+                ws.send(JSON.stringify({msg: 'send from client'}));
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" name="button" onclick="openWs(event)">open</button>
+        <button type="button" name="button" onclick="closeWs()">close</button>
+        <button type="button" name="button" onclick="sendMsg()">send</button>
+    </body>
+</html>

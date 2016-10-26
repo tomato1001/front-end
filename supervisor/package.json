@@ -1,0 +1,56 @@
+{
+  "name": "bgbb",
+  "version": "1.0.0",
+  "description": "browserify-gulp-bower-babel integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "pace": "./bower_components/pace/pace.js"
+  },
+  "browserify-shim": {
+    "jquery": "global:jQuery"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      [
+        "babelify",
+        {
+          "ignore": "/node_modules/",
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "browserify-shim": "^3.8.9",
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6",
+    "gulp-webserver": "^0.9.1",
+    "lodash.assign": "^3.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.3"
+  },
+  "dependencies": {
+    "alt": "^0.17.1",
+    "bootstrap": "^3.3.5",
+    "classnames": "^2.1.3",
+    "font-awesome": "^4.3.0",
+    "jquery": "^2.1.4",
+    "react": "^0.13.3",
+    "underscore": "^1.8.3"
+  }
+}
