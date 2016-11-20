@@ -28,7 +28,7 @@ module.exports = {
 		'./src/index.jsx'
 	],
 	output: {
-		path: path.join(__dirname, 'public'),
+		path: path.join(__dirname, 'public/dist'),
 		filename: '[chunkhash].js'
 	},
 	resolve: {
@@ -60,7 +60,7 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: './src/template.html',
-			title: 'Webpack App'
+			title: 'QQ空间相册采集'
 		}),
 		new webpack.optimize.DedupePlugin()
 	]

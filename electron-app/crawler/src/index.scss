@@ -46,11 +46,11 @@ body {
 	margin: 0 auto;
 }
 
-.chromeDriverPath {
+.storagePath {
 	padding-left: 30px;
 	width: 100%;
 }
 
-:local(.chromeDriverPath) input {
+:local(.storagePath) input {
 	width: 84.5%!important;
 }

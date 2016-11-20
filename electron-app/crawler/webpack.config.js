@@ -3,9 +3,12 @@ var webpack = require('webpack');
 var path = require('path');
 var loaders = require('./webpack.loaders');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
-const PORT = process.env.PORT || "8888";
+const PORT = process.env.PORT || "8080";
+
+console.log(HOST, PORT);
 
 // global css
 loaders.push({
@@ -42,8 +45,9 @@ module.exports = {
 	],
 	devtool: process.env.WEBPACK_DEVTOOL || 'cheap-module-source-map',
 	output: {
-		path: path.join(__dirname, 'public'),
-		filename: 'bundle.js'
+		path: path.join(__dirname, 'public/dist'),
+		filename: 'bundle.js',
+		publicPath: 'http://127.0.0.1:' + PORT + '/dist/'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx']
@@ -61,14 +65,19 @@ module.exports = {
 		inline: true,
 		// serve index.html in place of 404 responses to allow HTML5 history
 		historyApiFallback: true,
-		port: PORT,
-		host: HOST
+		// port: PORT,
+		// host: HOST,
+		publicPath: 'http://127.0.0.1:' + PORT + '/dist/'
 	},
 	plugins: [
+		new WebpackCleanupPlugin({
+			exclude: ["index.html"]
+		}),
 		new webpack.NoErrorsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
-			template: './src/template.html'
+			template: './src/template.html',
+			title: 'QQ空间相册采集'
 		}),
 	]
 };

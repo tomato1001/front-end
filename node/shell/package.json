@@ -1,0 +1,11 @@
+{
+  "name": "shell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "shell": "node src/shell.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
